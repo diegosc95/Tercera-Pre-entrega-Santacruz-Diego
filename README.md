@@ -1,19 +1,59 @@
 # Tercera-Pre-entrega-Santacruz-Diego
-Tercera Pre-entrega Coder
+Este proyecto Django, llamado "Registro de Cursos", es una aplicación web desarrollada como parte de mi trabajo práctico. Aquí encontrarás las instrucciones para que puedas ejecutar la aplicación localmente y verla en acción.
+El mismo me base en gran medida en lo visto en las clases 19 a la 21, sumandole cosas que fui viendo por internet
 
-# Orden de cosas
+## Requisitos previos
 
-1. Primero hace las migraciones `python .\manage.py makemigrations`
-2. Luego hacer el migrate `python manage.py migrate`
-3. Correr la consola `python .\manage.py runserver`
+- Python instalado (versión sugerida: 3.12.2)
+- Pip (instalador de paquetes de Python) instalado
+- Git instalado
 
-# URLS
-1. 'curso/'
-2. 'estudiantes/'
-3. 'profesores/'
-4. 'entregas/'
-5. 'ver_curso/'
-6. 'ver_estudiantes/'
-7. 'ver_profesores/'
-8. 'ver_entregas/'
+## Pasos para visualizar la aplicación
+
+1. **Clonar el repositorio:**
+
+   ```bash
+   git clone https://github.com/tu-usuario/tu-repositorio.git
+   cd tu-repositorio
+
+2. Instalar las dependencias:
+
+   `pip install -r requirements.txt`
+
+3. Aplicar migraciones:
+  `python manage.py migrate`
+   `python .\manage.py makemigrations`
+  
+4.  Iniciar la aplicación:
+   `python manage.py runserver`
+
+5. Visitar la aplicación:
+   Abre tu navegador y visita http://127.0.0.1:8000/
+   Si creaste un superusuario, puedes acceder al panel de administración en http://127.0.0.1:8000/admin/.
+
+6. Detener la aplicación:
+   En la terminal donde ejecutaste runserver, presiona Ctrl + C para detener el servidor.
+
+
+# Listado de Elemenos creados en HTML
+
+1. Templates
+- crear_cursos.html
+- crear_entregas.html
+- crear_estudiantes.html
+- crear_profes.html
+- inicio.html
+- padre.html
+- ver_cursos.html
+- ver_entregas.html
+- ver_estudiantes.html
+- ver_profes.html
+
+2. Modelos
+- Estudiantes
+- Curso
+- Profesor
+- Entregable
+
+# Cualquier duda me avisan. Abrazo!
 
