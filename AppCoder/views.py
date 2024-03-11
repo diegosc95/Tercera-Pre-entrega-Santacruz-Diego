@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.models import *
 
-# Create your views here.
+# Aqui esta las formulas para visualizaciones. 
 
 def ver_estudiantes(request):
     return render(request,"ver_estudiantes.html",)
@@ -10,65 +10,79 @@ def ver_estudiantes(request):
 def ver_curso(request):
     return render(request,"ver_cursos.html",)
 
-def ver_profesor(request):
+def ver_profesores(request):
     return render(request,"ver_profes.html",)
 
-def ver_entregable(request):
+def ver_entregables(request):
     return render(request,"ver_entregas.html",)
-
 
 def inicio(request):
 
     return render(request, "inicio.html")
 
-def ver_estudiantes(request):
-
-    return render(request, "ver_estudiantes.html")
-
-def ver_cursos(request):
-
-    return render(request, "ver_cursos.html")
-
-def ver_profesores(request):
-
-    return render(request, "ver_profes.html")
-
-def ver_entregables(request):
-
-    return render(request, "ver_entregas.html")
+# Aqui esta las formulas para crear info para actualizar nuestra base de datos. 
 
 def crear_curso(request):
 
-    curso_1 = Curso(nombre="SQL", comision=50211)
+    if request.method == "POST": # que sepa que use el boton de enviar
+        curso_nuevo = Curso(nombre=request.POST["curso_nombre"],comision =request.POST["curso_comision"])
+        curso_nuevo.save()
+        return render(request,"inicio.html")
     
-    curso_1.save()
-     
-    return HttpResponse("Info creada")
+    return render(request,"crear_cursos.html")
 
-def crear_estudiante(request):
+def crear_entregas(request):
+    if request.method == "POST":
+        nombre = request.POST["entregable_nombre"]
+        fecha_entrega = request.POST["entregable_fecha"]
+        entregado = request.POST.get("entregable") == "on"
 
-    est_1 = Estudiantes(nombre="Diego", apellido="Santacruz", email="die@h.com",edad=29 )
-    est_2 = Estudiantes(nombre="Elias", apellido="Jara", email="eli@h.com",edad=19 )
-
-    est_1.save()
-    est_2.save()
-
-    info = {"nombre1":est_1.nombre,"nombre2":est_2.nombre,}
-
-    return render(request,"crear_estudiantes.html",info)
+        entrega_nueva = Entregable(nombre=nombre, fechaEntrega=fecha_entrega, entregado=entregado)
+        entrega_nueva.save()
+        return render(request, "inicio.html")
+    
+    return render(request, "crear_entregas.html")
 
 def crear_profesores(request):
 
-    profe_1 = Profesor(nombre="Juan", apellido="Perez", email="jua@h.com",profesion="Abogado")
+    if request.method == "POST": # que sepa que use el boton de enviar
+        profe_nuevo = Profesor(nombre=request.POST["profesor_nombre"], apellido=request.POST["profesor_apellido"], email=request.POST["profesor_email"],profesion=request.POST["curso_profesion"])
+        profe_nuevo.save()
+        return render(request,"inicio.html")
     
-    profe_1.save()
+    return render(request,"crear_profes.html")    
+
+def crear_estudiante(request):
+
+    if request.method == "POST": # que sepa que use el boton de enviar
+        estudiante_nuevo = Estudiantes(nombre=request.POST["estudiante_nombre"], apellido=request.POST["estudiante_apellido"], email=request.POST["estudiante_email"],edad=request.POST["estudiante_edad"])
+        estudiante_nuevo.save()
+        return render(request,"inicio.html")
     
-    return render(request,"crear_profes.html")
+    return render(request,"crear_estudiantes.html") 
 
-def crear_entregas(request):
+# Aqui esta las formulas para buscar info en nuestra base de datos. 
 
-    ent_1 = Entregable(nombre="Diego",fechaentrega="2024-02-01",entregado=1)
+def buscar_cursos(request):
+    mensaje = None
+    cursos = None
 
-    ent_1.save()
-    
-    return render(request,"crear_entregas.html")
+    if request.GET:
+        nombre = request.GET.get("nombre", None)
+
+        if nombre and nombre.strip():  # Verificar que el nombre no esté vacío o solo contenga espacios en blanco
+            cursos = Curso.objects.filter(nombre__icontains=nombre)
+
+            if cursos.exists():
+                mensaje = f'¡Felicidades, hemos encontrado los siguientes cursos para: {nombre}'
+            else:
+                mensaje = f'Lo siento, no se encontraron cursos para: {nombre}'
+        else:
+            mensaje = 'Por favor, ingrese al menos un carácter para realizar la búsqueda.'
+
+    return render(request, "inicio.html", {"mensaje": mensaje, "cursos": cursos})
+
+
+
+
+

@@ -1,13 +1,32 @@
 {% extends "padre.html" %}
 
 {% block titulo_pagina %}
-PreEntrega3 - Pagina Inicio
+PreEntrega3 - Inicio
 {% endblock %}
 
 {% block titulo %}
-<p>Bienvenido al Inicio.<br>PreEntrega3.</p>
+<p>Bienvenido a mi Pagina Web.<br>"PreEntrega3".</p>
 {% endblock %} 
 
 {% block area_form %}
-<p>Pruebas</p>
+
+<form action="/AppCoder/buscar_cursos/" method="get"> 
+    <p>
+    <p><strong style="font-size: larger;">Aqui puedes buscar un curso en Especifico</strong></p>
+     <input type="text" name="nombre"> 
+     <input type="submit" value="Buscar">
+    </p>
+</form>
+
+{% if mensaje %}
+    <p>{{mensaje}}</p>
+    {% if cursos %}
+        {% for curso in cursos %}
+            <p>{{curso}}</p>
+        {% endfor %}
+    {% endif %}
+{% else %}
+    <p>No se encontraron resultados</p>
+{% endif %}
+
 {% endblock %}

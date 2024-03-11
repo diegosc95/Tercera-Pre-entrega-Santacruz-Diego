@@ -1,0 +1,25 @@
+{% extends "padre.html" %}
+
+{% block titulo_pagina %}
+PreEntrega3 - Cursos
+{% endblock %}
+
+{% block titulo %}
+<p>Bienvenido a Curso.<br>Aqui puede agregar cursos</p>
+{% endblock %}
+
+{% block area_form %}
+
+<form action="/AppCoder/curso/" method="post"> {% csrf_token %}
+    <p></p>
+    <p><strong style="font-size: larger;">Formulario - Agregar Curso</strong></p>
+    <p> <strong>Nombre: </strong> &nbsp; <input type="text" name="curso_nombre"> </p>
+    <p> <strong>Comisión: </strong> <input type="text" name="curso_comision">
+     </p><p>
+    <button type="submit">Enviar</button></p>
+
+</form>
+
+{% endblock %}
+
+
