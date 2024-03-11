@@ -37,7 +37,7 @@ El mismo me base en gran medida en lo visto en las clases 19 a la 21, sumandole 
    En la terminal donde ejecutaste runserver, presiona Ctrl + C para detener el servidor.
 
 
-# Listado de Elemenos creados en HTML
+# Listado de Elemenos creados
 
 1. Templates
 - crear_cursos.html
@@ -56,6 +56,17 @@ El mismo me base en gran medida en lo visto en las clases 19 a la 21, sumandole 
 - Curso
 - Profesor
 - Entregable
+
+3. URL http://127.0.0.1:8000/AppCoder/
+- curso/
+- entregas/
+- profesores/
+- estudiantes/
+- ver_curso/
+- ver_entregas/
+- ver_profesores/
+- ver_estudiantes/
+- buscar_cursos/
 
 # Cualquier duda me avisan. Abrazo!
 
