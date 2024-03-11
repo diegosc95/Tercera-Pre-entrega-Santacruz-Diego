@@ -29,9 +29,11 @@ El mismo me base en gran medida en lo visto en las clases 19 a la 21, sumandole 
 
 5. Visitar la aplicación:
    Abre tu navegador y visita http://127.0.0.1:8000/
-   Si creaste un superusuario, puedes acceder al panel de administración en http://127.0.0.1:8000/admin/.
+   El panel de administración en http://127.0.0.1:8000/admin/.
+   usuario: diegosc
+   Password: diego1234
 
-6. Detener la aplicación:
+7. Detener la aplicación:
    En la terminal donde ejecutaste runserver, presiona Ctrl + C para detener el servidor.
 
 
